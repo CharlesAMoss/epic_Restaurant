@@ -19,7 +19,7 @@
     $DB = new PDO($server, $username, $password);
 
 
-    class CuisineTest extends PHPUnit_Framework_TestCase
+    class RestaurantTest extends PHPUnit_Framework_TestCase
     {
 
         protected function tearDown()
@@ -29,7 +29,7 @@
         }//end function
 
 
-        
+
 
 
 
