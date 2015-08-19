@@ -80,9 +80,10 @@
         $name2= "New Thai Blues";
         $test_restaurant2 = new Restaurant($name2, $cuisine_id, $id);
         $test_restaurant2->save();
+
         //Act
         $result = Restaurant::getAll();
-//var_dump($result);
+
         //Assert
         $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
     }
@@ -98,7 +99,7 @@
         //Act
         $id = $cuisine1->getId();
         $result = Cuisine::find($id);
-        
+
         //Assert
         $this->assertEquals($cuisine1, $result);
     }
