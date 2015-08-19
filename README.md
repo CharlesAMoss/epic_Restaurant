@@ -1,27 +1,27 @@
-##
-# Silex Twig Template
 
-##### _Template for getting up and going with a Silex/Twig app._
+# Restaurant Directory App
 
-#### Mike Chastain
+##### _User builds a directory of restaurants based on cuisine. 8/19/2015_
+
+#### Mike Chastain & Charles Moss
 
 ## Description
 
-_Add a Description Here_
+_User enters a "cuisine" and  corresponding "restaurants" with details to create a directory listing by cuisine._
 
 ## Setup
 
-Add your setup information instructions here.
+When installing from source you may notice that once you have cloned this repo, that this project makes use of a PHP Dependency Manager: [Composer](https://github.com/composer/composer). Once you have Composer installed you can acquire any project dependencies via your shell by entering:
 
 ```
 $ composer install
 ```
 
-_then start up a local PHP server from within the "web" directory within the project's folder and point your browser to whatever local host server you have created._  
+_You then only need to start up a local PHP server from within the "web" directory within the project's folder and point your browser to whatever local host server you have created._
 
 ## Technologies Used
 
-_This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates._
+_This project makes use of PHP, mySQL, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates._
 
 ## To Do
 
@@ -31,7 +31,7 @@ _This project makes use of PHP, the testing framework [PHPUnit](https://phpunit.
 
 
 
-Copyright (c) 2015 Mike Chastain
+Copyright (c) 2015 Mike Chastain & Charles Moss
 
 This software is licensed under the MIT license.
 
