@@ -10,11 +10,11 @@ class Cuisine {
             $this->style = $style;
             $this->id = $id;
         }
-        function setstyle($new_style)
+        function setStyle($new_style)
         {
             $this->style = (string) $new_style;
         }
-        function getstyle()
+        function getStyle()
         {
             return $this->style;
         }
@@ -27,7 +27,7 @@ class Cuisine {
             $GLOBALS['DB']->exec("INSERT INTO cuisines (style) VALUES ('{$this->getstyle()}')");
             $this->id= $GLOBALS['DB']->lastInsertId();
         }
-        function getrestaurants()
+        function getRestaurants()
         {
             $restaurants = array();
             $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()} ORDER BY due_date;");

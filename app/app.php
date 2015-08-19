@@ -2,10 +2,12 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/myClass.php";
 
-    session_start();
-    if (empty($_SESSION['elements'])) {
-    $_SESSION['elements'] = array();
-    }
+
+    $server = 'mysql:host=localhost;dbname=BRiT';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
+
 
     $app = new Silex\Application();
     $app['debug']  = true;
