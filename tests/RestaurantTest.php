@@ -122,6 +122,7 @@
             //Assert
             $this->assertEquals(true, is_numeric($result));
         }
+
         function test_restaurant_find()
         {
             //Arrange
@@ -132,7 +133,7 @@
             $style2 = "asian fusion";
             $test_cuisine2 = new Cuisine($style2);
             $test_cuisine2->save();
-//make restaurants
+
             $name = "Pok Pok";
             $category_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $category_id);
@@ -151,6 +152,29 @@
             $this->assertEquals($test_restaurant, $result);
         }
 
+        function test_restaurant_update()
+        {
+
+            //Arrange
+            $style = "Thai";
+
+            $test_cuisine = new Cuisine($style);
+            $test_cuisine->save();
+
+            $name = "Pok Pok";
+            $category_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $category_id);
+            $test_restaurant->save();
+
+            $new_name = "Pok Pok Noi";
+
+            //Act
+            $test_restaurant->update($new_name);
+
+            //Assert
+            $this->assertEquals("Pok Pok Noi", $test_restaurant->getName());
+
+         }
 
 
 
