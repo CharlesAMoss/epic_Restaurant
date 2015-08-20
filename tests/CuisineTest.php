@@ -123,5 +123,22 @@
 
      }
 
+     function test_cuisine_delete()
+     {
+
+         //Arrange
+         $cuisine1 = new Cuisine("Thai");
+         $cuisine1->save();
+         $cuisine2 = new Cuisine("Dogfood");
+         $cuisine2->save();
+         
+         //Act
+         $cuisine1->delete();
+
+         //Assert
+         $this->assertEquals([$cuisine2],Cuisine::getAll());
+
+     }
+
 }
 ?>

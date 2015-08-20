@@ -38,6 +38,11 @@ class Cuisine {
             $this->setStyle($new_style);
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM cuisines WHERE id = {$this->getId()};");
+        }
+
         function getRestaurants()
         {
             $restaurants = array();
@@ -68,7 +73,7 @@ class Cuisine {
 
         static function deleteAll()
         {
-          $GLOBALS['DB']->exec("DELETE FROM cuisines;");
+            $GLOBALS['DB']->exec("DELETE FROM cuisines;");
         }
 
         static function find($search_id)
