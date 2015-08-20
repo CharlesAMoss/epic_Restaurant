@@ -24,8 +24,8 @@ _You then only need to start up a local PHP server from within the "web" directo
 _This project makes use of PHP, mySQL, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates._
 
 ## To Do
-* Add patch and delete features.
-* build front end to spec.
+ 
+* build front end to spec with [word cloud](https://github.com/lucaong/jQCloud)
 * implement nyan cat in phpunit from whatthejeff
 
 
