@@ -17,5 +17,17 @@
         return $app['twig']->render('index.html.twig', array('cuisine' => Cuisine::getAll()));
     });
 
+    $app->get("/restaurants/{id}", function($id) use ($app) {
+        //shows a certain restaurant based on id
+
+        return $app['twig']->render('index.html.twig', array('cuisine' => Cuisine::getAll()));
+    });
+
+    $app->patch("/update_restaurant", function($id) use ($app) {
+        //shows a certain restaurant based on id
+        
+        return $app['twig']->render('index.html.twig', array('cuisine' => Cuisine::getAll()));
+    });
+
     return $app;
     ?>
