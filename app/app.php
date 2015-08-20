@@ -13,9 +13,8 @@
     $app['debug']  = true;
     $app->register(new Silex\Provider\TwigServiceProvider(),array('twig.path' => __DIR__.'/../views'));
 
-    $app->get("/", function() use ($app){
-      $mystring = "Data from the app display in twig";
-            return $app['twig']->render('template.html.twig', array('data' => $mystring));
+    $app->get("/", function() use ($app) {
+        return $app['twig']->render('index.html.twig', array('cuisine' => Cuisine::getAll()));
     });
 
     return $app;

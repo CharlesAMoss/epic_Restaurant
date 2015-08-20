@@ -11,8 +11,6 @@
     require_once "src/Cuisine.php";
     require_once "src/Restaurant.php";
 
-
-
     $server = 'mysql:host=localhost;dbname=BRiT_test';
     $username = 'root';
     $password = 'root';
