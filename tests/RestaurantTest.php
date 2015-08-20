@@ -176,7 +176,32 @@
 
          }
 
+        function test_restaurant_delete()
+        {
 
+            //Arrange
+            $style = "Thai";
+            $test_cuisine = new Cuisine($style);
+            $test_cuisine->save();
+
+            $name = "Pok Pok";
+            $category_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $category_id);
+            $test_restaurant->save();
+            $name2 = "Dicks";
+            $category_id2 = $test_cuisine->getId();
+            $test_restaurant2 = new Restaurant($name2, $category_id);
+            $test_restaurant2->save();
+
+
+            //Act
+            $test_restaurant->delete();
+
+            //Assert
+            $this->assertEquals([$test_restaurant2], Restaurant::getAll());
+            
+
+        }
 
 
     } //end class

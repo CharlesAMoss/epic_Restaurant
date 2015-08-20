@@ -46,6 +46,11 @@ class Restaurant
         $this->setName($new_name);
     }
 
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
+    }
+
     static function deleteRestaurants($cuisine_id)
     {
         $restaurants = Restaurant::getAll();
@@ -54,6 +59,7 @@ class Restaurant
             $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id=$cuisune_id;");
         }
     }
+
 
     static function find($search_id)
     {
