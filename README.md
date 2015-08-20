@@ -25,7 +25,8 @@ _This project makes use of PHP, mySQL, the testing framework [PHPUnit](https://p
 
 ## To Do
 * Add patch and delete features.
-*  build front end to spec.
+* build front end to spec.
+* implement nyan cat in phpunit from whatthejeff
 
 
 
