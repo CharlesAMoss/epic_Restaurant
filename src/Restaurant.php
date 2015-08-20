@@ -77,17 +77,13 @@ class Restaurant
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
-    function update($new_name)
+    function updateRestaurant($new_name, $new_cuisine_id, $new_id, $new_stars, $new_website, $new_phone)
     {
-        $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}', stars = {$new_stars}, website = '{$new_website}', phone = '{$new_phone}' WHERE id = {$this->getId()};");
         $this->setName($new_name);
-    }
-
-    function updateGeneral($field,$value)
-    {
-        $GLOBALS['DB']->exec("UPDATE restaurants SET {$field} = '{$value}' WHERE id = {$this->getId()};");
-        $myString = "set$field($value)";
-        eval ($myString);
+        $this->setStars($new_stars);
+        $this->setWebsite($new_website);
+        $this->setPhone($new_phone);
     }
 
     function delete()
@@ -100,7 +96,7 @@ class Restaurant
         $restaurants = Restaurant::getAll();
         foreach($restaurants as $restaurant)
         {
-            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id=$cuisune_id;");
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id=$cuisine_id;");
         }
     }
 

@@ -157,22 +157,29 @@
 
             //Arrange
             $style = "Thai";
-
             $test_cuisine = new Cuisine($style);
             $test_cuisine->save();
 
             $name = "Pok Pok";
-            $category_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($name, $category_id);
-            $test_restaurant->save();
+            $cuisine_id = $test_cuisine->getId();
+            $stars = 4;
+            $website = "www.pokpokpdx.com";
+            $phone = "503 232 1387";
+            $tr = new Restaurant($name, $cuisine_id, $stars, $website, $phone);
+            $tr ->save();
 
             $new_name = "Pok Pok Noi";
+            $new_cuisine_id = $test_cuisine->getId();
+            $new_id =
+            $new_stars = 7;
+            $new_website = "balls";
+            $new_phone ="503 555 5555";
 
             //Act
-            $test_restaurant->update($new_name);
+            $tr->updateRestaurant($new_name,$tr->getCuisineId(), $tr->getID(),$new_stars, $new_website, $new_phone);
 
             //Assert
-            $this->assertEquals("Pok Pok Noi", $test_restaurant->getName());
+            $this->assertEquals(7, $tr->getStars(), "OH NO");
 
          }
 
@@ -203,8 +210,8 @@
 
         }
 
-//testing that when we feed the restaurant a star number it returns
-function test_restaurant_getStars()
+        //testing that when we feed the restaurant a star number it returns
+        function test_restaurant_getStars()
         {
             //Arrange
             $style = "Thai";
