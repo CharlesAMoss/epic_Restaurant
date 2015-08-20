@@ -104,5 +104,24 @@
         $this->assertEquals($cuisine1, $result);
     }
 
+    function test_cuisine_update()
+    {
+
+        //Arrange
+        $style = "Thai";
+        $id = null;
+        $test_cuisine = new Cuisine($style, $id);
+        $test_cuisine->save();
+
+        $new_style = "Asian";
+
+        //Act
+        $test_cuisine->update($new_style);
+
+        //Assert
+        $this->assertEquals("Asian", $test_cuisine->getStyle());
+
+     }
+
 }
 ?>

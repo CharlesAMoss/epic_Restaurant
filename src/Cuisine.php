@@ -10,23 +10,34 @@ class Cuisine {
             $this->style = $style;
             $this->id = $id;
         }
+
         function setStyle($new_style)
         {
             $this->style = (string) $new_style;
         }
+
         function getStyle()
         {
             return $this->style;
         }
+
         function getId()
         {
             return $this->id;
         }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO cuisines (style) VALUES ('{$this->getstyle()}')");
             $this->id= $GLOBALS['DB']->lastInsertId();
         }
+
+        function update($new_style)
+        {
+            $GLOBALS['DB']->exec("UPDATE cuisines SET style = '{$new_style}' WHERE id = {$this->getId()};");
+            $this->setStyle($new_style);
+        }
+
         function getRestaurants()
         {
             $restaurants = array();
@@ -41,6 +52,7 @@ class Cuisine {
             }
             return $restaurants;
         }
+
         static function getAll()
         {
             $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisines;");
@@ -53,10 +65,12 @@ class Cuisine {
             }
             return $cuisines;
         }
+
         static function deleteAll()
         {
           $GLOBALS['DB']->exec("DELETE FROM cuisines;");
         }
+
         static function find($search_id)
         {
             $found_cuisine = null;
