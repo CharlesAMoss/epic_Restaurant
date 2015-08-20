@@ -5,13 +5,19 @@ class Restaurant
     private $name;
     private $cuisine_id;
     private $id;
+    private $stars;
+    private $website;
+    private $phone;
 
-    function __construct($name,$cuisine_id,$id = null)
+    function __construct($name,$cuisine_id,$id = null, $stars = 0, $website = "", $phone = "")
     {
 
         $this->name = $name;
         $this->cuisine_id = $cuisine_id;
         $this->id = $id;
+        $this->stars = $stars;
+        $this->website = $website;
+        $this->phone = $phone;
 
     }
 
@@ -24,6 +30,37 @@ class Restaurant
     {
         return $this->name;
     }
+
+    function setStars($new_stars)
+    {
+        $this->stars = $new_stars;
+    }
+
+    function getStars()
+    {
+        return $this->stars;
+    }
+
+    function setWebsite($new_website)
+    {
+        $this->website = (string) $new_website;
+    }
+
+    function getWebsite()
+    {
+        return $this->website;
+    }
+
+    function setPhone($new_phone)
+    {
+        $this->phone = (string) $new_phone;
+    }
+
+    function getPhone()
+    {
+        return $this->phone;
+    }
+
     function getId()
     {
         return $this->id;
@@ -36,7 +73,7 @@ class Restaurant
 
     function save()
     {
-        $statement = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()})");
+        $statement = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id, stars, website, phone) VALUES ('{$this->getName()}', {$this->getCuisineId()}, {$this->getStars()},'{$this->getWebsite()}', '{$this->getPhone()}')");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
@@ -44,6 +81,13 @@ class Restaurant
     {
         $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}' WHERE id = {$this->getId()};");
         $this->setName($new_name);
+    }
+
+    function updateGeneral($field,$value)
+    {
+        $GLOBALS['DB']->exec("UPDATE restaurants SET {$field} = '{$value}' WHERE id = {$this->getId()};");
+        $myString = "set$field($value)";
+        eval ($myString);
     }
 
     function delete()
@@ -82,7 +126,10 @@ class Restaurant
             $name = $restaurant['name'];
             $id = $restaurant['id'];
             $cuisine_id = $restaurant['cuisine_id'];
-            $new_restaurant = new Restaurant($name, $cuisine_id, $id);
+            $stars = $restaurant['stars'];
+            $website = $restaurant['website'];
+            $phone = $restaurant['phone'];
+            $new_restaurant = new Restaurant($name, $cuisine_id, $id,$stars,$website,$phone);
             array_push($restaurants, $new_restaurant);
         }
         return $restaurants;

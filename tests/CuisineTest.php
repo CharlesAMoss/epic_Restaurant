@@ -126,17 +126,30 @@
      function test_cuisine_delete()
      {
 
-         //Arrange
-         $cuisine1 = new Cuisine("Thai");
-         $cuisine1->save();
-         $cuisine2 = new Cuisine("Dogfood");
-         $cuisine2->save();
-         
+         $style = "Thai";
+         $test_cuisine = new Cuisine($style);
+         $test_cuisine->save();
+
+         $style2 = "burgers";
+         $test_cuisine2 = new Cuisine($style2);
+         $test_cuisine2->save();
+
+         $name = "Pok Pok";
+         $category_id = $test_cuisine->getId();
+         $test_restaurant = new Restaurant($name, $category_id);
+         $test_restaurant->save();
+
+         $name2 = "Dicks";
+         $category_id2 = $test_cuisine2->getId();
+         $test_restaurant2 = new Restaurant($name2, $category_id2);
+         $test_restaurant2->save();
+
+
          //Act
-         $cuisine1->delete();
+         $test_cuisine->delete();
 
          //Assert
-         $this->assertEquals([$cuisine2],Cuisine::getAll());
+         $this->assertEquals([$test_restaurant2],Restaurant::getAll());
 
      }
 

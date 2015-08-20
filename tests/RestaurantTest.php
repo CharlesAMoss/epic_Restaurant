@@ -34,7 +34,7 @@
             $style = "Thai";
             $test_cuisine = new Cuisine($style);
             $test_cuisine->save();
-            $name = "Pok Pok";
+            $name = "Pok-Pok";
             $category_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $category_id);
             //Act
@@ -199,10 +199,35 @@
 
             //Assert
             $this->assertEquals([$test_restaurant2], Restaurant::getAll());
-            
+
 
         }
 
+//testing that when we feed the restaurant a star number it returns
+function test_restaurant_getStars()
+        {
+            //Arrange
+            $style = "Thai";
+            $test_cuisine = new Cuisine($style);
+            $test_cuisine->save();
+
+            $name = "Pok Pok";
+            $category_id = $test_cuisine->getId();
+            $stars = 5;
+            $test_restaurant = new Restaurant($name, $category_id,null,$stars);
+            $test_restaurant->save();
+            $name2 = "Dicks";
+            $stars2 = 3;
+            $category_id2 = $test_cuisine->getId();
+            $test_restaurant2 = new Restaurant($name2, $category_id,null,$stars2);
+            $test_restaurant2->save();
+
+            //Act
+            $result = Restaurant::getAll();
+            //Assert
+            $this->assertEquals(5,$result[0]->getStars());
+
+        }
 
     } //end class
 
